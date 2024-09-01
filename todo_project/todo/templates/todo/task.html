@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <h1>change Task</h1>
+</head>
+<body>
+
+<form method="post">
+        {% csrf_token %}
+    <input type="text" name="title" id ="title" value='{{task.title}}'>
+<select id="task_type" name="task_type">
+    <option value="TODO" {% if task.tag == 'TODO' %}selected{% endif %}>TODO</option>
+    <option value="DONE" {% if task.tag == 'DONE' %}selected{% endif %}>DONE</option>
+    <option value="DOING" {% if task.tag == 'DOING' %}selected{% endif %}>DOING</option>
+</select>
+    <button type="submit">Save Changes</button>
+</form>
+    <a href="{% url 'index' %}">Back to Task List</a>
+</body>
+</html>
